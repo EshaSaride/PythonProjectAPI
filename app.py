@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from datetime import date
 
 #create an instance of the Flask class
 app = Flask(__name__)
@@ -12,6 +13,12 @@ def home():
 @app.route( '/api', methods=['GET'])
 def api():
     data = {"message" : "This is a simple API response"}
+    return jsonify(data)
+
+
+@app.route('/getdate', methods=['GET'])
+def getdate():
+    data={"message": date.today()}
     return jsonify(data)
 
 if __name__ == '__main__':
